@@ -23,7 +23,7 @@ import { AboutComponent } from "./components/about/about.component";
     AboutComponent,
   ],
   imports: [BrowserModule, APP_ROUTING],
-  providers: [],
+  providers: [HeroesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
