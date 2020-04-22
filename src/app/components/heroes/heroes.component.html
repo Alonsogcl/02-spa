@@ -1,7 +1,8 @@
 <h1>Héroes <small>Marvel y DC</small></h1>
 <hr>
 <div class="card-columns">
-    <div class="card">
+    <div class="card" *ngFor="let heroe of heroes">
+        <!--alias de la variable y sera una variable local de heroes (la que se declaró en heroes.component.ts heroes: Heroe[] = [];)-->
         <img src="assets/img/aquaman.png" class="card-img-top" alt="Aquaman">
         <div class="card-body">
             <h5 class="card-title">Card title</h5>

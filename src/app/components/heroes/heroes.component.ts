@@ -8,9 +8,9 @@ import { HeroesService, Heroe } from '../../servicios/heroes.service';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes:Heroe[]=[];
-  
-  constructor(private _heroesService:HeroesService) {
+  heroes: Heroe[] = [];
+
+  constructor(private _heroesService: HeroesService) {
     console.log("constructor");
    }
 
