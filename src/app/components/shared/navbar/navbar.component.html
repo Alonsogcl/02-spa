@@ -23,10 +23,9 @@
         </ul>
 
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-        Search
-      </button>
+            <!--() para disparar un evento | Se le puso como alias a esta caja #buscarTexto | buscarHeroe() es una función que se va a disparar cuando prsionen una tecla y se le manda el valor de la caja de texto buscarTexto.value-->
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar héroe" (keyup.enter)="buscarHeroe(buscarTexto.value)" #buscarTexto>
+            <button (click)="buscarHeroe(buscarTexto.value)" class="btn btn-outline-primary my-2 my-sm-0 " type="button">Buscar</button>
         </form>
     </div>
 </nav>
