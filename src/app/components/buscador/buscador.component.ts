@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'; //Para agarrar el parámetro que se manda por la URL
+import { HeroesService } from '../../servicios/heroes.service';
 
 @Component({
   selector: 'app-buscador',
@@ -7,22 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscadorComponent implements OnInit {
 
-  constructor() { }
+  heroes:any[]=[] //Arreglo porque pueden ser varias coincidencias
+  termino:string;
 
-  ngOnInit(): void {
-    buscarHeroes(termino: string): Heroe[] {
-      let heroesArr: Heroe[] = [];
-      termino = termino.toLowerCase();
-      //Por cada uno de los heroes lo va a verificar todo
-      for (let heroe of this.heroes) { //barrido de todo nuestro arreglo de los heroes para ver si alguno tiene el nombre que estamos buscando, barrer todos los heroes que tengo en el servicio 
-        let nombre = heroe.nombre.toLowerCase(); //por cada iteración voy a extraer el nombre de cada heroe 
+  constructor(private activatedRoute: ActivatedRoute,
+              private _heroesService: HeroesService
+            ) { //Aquí ya tenemos nuestro parámetro
+   }
 
-        if (nombre.indexOf(termino) >= 0) { //si el nombre de la iteracion de mi heroe (indexof me permitira buscar un string dentro del nombre) Si se encuentra el termino en ese nombre va a regresar la posicion donde la encuentra un 0 o superior sino lo encuentra regresa un -1 , mayor q 0 si encontro el termino
-          heroesArr.push(heroe); //Agregar ese heroe a mi nuevo de arreglos temporal xq no queremos modificar la data del arreglo
-        }
-      }
-      return heroesArr; //Regresa un arreglo de Heroe
-    }
+  ngOnInit(){
+    this.activatedRoute.params.subscribe(params=>{
+      this.termino=params['termino']; //Lo que venga en el término
+      this.heroes=this._heroesService.buscarHeroes(params['termino']);
+      console.log(this.heroes);
+    });
   }
 
 }

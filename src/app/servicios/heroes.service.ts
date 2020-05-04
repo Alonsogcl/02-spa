@@ -67,6 +67,21 @@ export class HeroesService{
     getHeroe(idx: string){
       return this.heroes[idx];
     }
+//Barrido de todos los heroes del arreglo para ver si alguno 
+//tiene un nombre que coincida con el termino
+    buscarHeroes(termino:string):Heroe[]{ //Va a regresar un arreglo
+      let heroesArr:Heroe[]=[];
+      termino=termino.toLowerCase();
+
+      for(let heroe of this.heroes){
+        let nombre=heroe.nombre.toLowerCase();
+        if(nombre.indexOf(termino)>=0){ //indexOf permite buscar un string dentro del nombre
+                                        //indexOf regresa un 0 o superior si lo encuentra sino regresa -1
+          heroesArr.push(heroe)
+        }
+      }
+      return heroesArr;
+    }
 
 }
     export interface Heroe{
