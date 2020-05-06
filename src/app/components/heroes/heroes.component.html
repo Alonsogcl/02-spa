@@ -1,5 +1,6 @@
 <h1>Héroes <small>Marvel y DC</small></h1>
 <hr>
 <div class="card-columns"><!--heroe es el nombre de la variable local en lugar de heroe se puede poner foo-->
-    <app-heroe-tarjeta [heroe]="foo" [index]="i" *ngFor="let foo of heroes; let i= index "></app-heroe-tarjeta>
+    <app-heroe-tarjeta (heroeSeleccionado)="verHeroe($event)" [heroe]="foo" [index]="i" *ngFor="let foo of heroes; let i= index "></app-heroe-tarjeta>
+    <!--para recibir el evento que se está emitiendo de heroeSeleccionado se usa $event-->
 </div>
